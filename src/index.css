@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito Sans", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-title: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  /* ===========================================
+     ITAPLAN BRAND PALETTE
+     Institutional blue + warm gold
+     =========================================== */
+
+  /* Primary Blues */
+  --color-itp-blue-950: #061638;
+  --color-itp-blue-900: #0A2A6E;
+  --color-itp-blue-800: #103A8C;
+  --color-itp-blue-700: #1E5BCF;
+  --color-itp-blue-600: #2D6FE0;
+  --color-itp-blue-500: #4F8BF5;
+  --color-itp-blue-100: #DCE7FA;
+  --color-itp-blue-50:  #EEF4FE;
+
+  /* Accent Yellows / Gold */
+  --color-itp-gold-900: #8A6204;
+  --color-itp-gold-700: #C58A07;
+  --color-itp-gold-600: #E2A40C;
+  --color-itp-gold-500: #F5B800;
+  --color-itp-gold-400: #FFC72C;
+  --color-itp-gold-100: #FFEEB0;
+  --color-itp-gold-50:  #FFF8DD;
+
+  /* Status colors */
+  --color-itp-success: #0F8B58;
+  --color-itp-success-light: #DEF5EA;
+  --color-itp-danger: #B42A2A;
+  --color-itp-danger-light: #FDE7E7;
+  --color-itp-warning: #C58A07;
+  --color-itp-warning-light: #FFF1CC;
+
+  /* Surfaces / Neutrals */
+  --color-itp-surface: #FFFFFF;
+  --color-itp-surface2: #F6F8FC;
+  --color-itp-surface3: #EEF2F8;
+  --color-itp-border: #DDE3EE;
+  --color-itp-border-soft: #E8EDF5;
+
+  /* Text */
+  --color-itp-text1: #0E1A33;
+  --color-itp-text2: #4A5878;
+  --color-itp-text3: #8893AE;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-itp-text1);
+  background-color: #F6F8FC;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #C7D0E2;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A2BE;
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-fast {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-up {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes bounce-short {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in       { animation: fade-in 0.35s ease-out both; }
+.animate-fade-in-fast  { animation: fade-in-fast 0.2s ease-out both; }
+.animate-scale-up      { animation: scale-up 0.3s cubic-bezier(.2,.9,.3,1) both; }
+.animate-bounce-short  { animation: bounce-short 1.2s ease-in-out infinite; }
+.animate-spin-slow     { animation: spin-slow 6s linear infinite; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+/* Helper class for the Itaplan title font */
+.font-title {
+  font-family: var(--font-title);
+  letter-spacing: -0.01em;
+}
+
+/* Premium gradient utility */
+.itp-gradient-primary {
+  background: linear-gradient(135deg, #0A2A6E 0%, #1E5BCF 100%);
+}
+.itp-gradient-gold {
+  background: linear-gradient(135deg, #E2A40C 0%, #FFC72C 100%);
+}
+.itp-gradient-hero {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(255,199,44,0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(30,91,207,0.35), transparent 60%),
+    linear-gradient(135deg, #06163A 0%, #0A2A6E 60%, #103A8C 100%);
+}
