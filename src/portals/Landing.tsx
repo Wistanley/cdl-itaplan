@@ -30,7 +30,7 @@ export default function Landing({ setPortal, activeCampaign, totalLojas, totalCu
         <ItaplanLogo size="md" invert />
         <div className="hidden sm:flex items-center gap-6 text-[12px] font-semibold text-blue-100/80">
           <span className="inline-flex items-center gap-1.5">
-            <i className="ti ti-shield-check text-[#FFC72C]"></i> Plataforma LGPD-ready
+            <i className="ti ti-shield-check text-[#FFC72C]"></i> Em conformidade com a LGPD
           </span>
           <span className="inline-flex items-center gap-1.5">
             <i className="ti ti-map-pin text-[#FFC72C]"></i> Itabira · Minas Gerais
@@ -91,7 +91,7 @@ export default function Landing({ setPortal, activeCampaign, totalLojas, totalCu
             icon="ti-building-store"
             accent="blue"
             title="Portal do Lojista"
-            description="Registre vendas, emita cupons, receba comunicados da administração e acompanhe a performance da sua loja."
+            description="Registre vendas, emita cupons, receba comunicados da administração e acompanhe o desempenho da sua loja."
             cta="Entrar como lojista"
           />
           <PortalCard
@@ -122,96 +122,97 @@ export default function Landing({ setPortal, activeCampaign, totalLojas, totalCu
 // ==========================================
 // FEATURES SECTION — funcionalidades planejadas
 // ==========================================
-const FEATURES: { icon: string; title: string; description: string; tag: 'roadmap' | 'pronto' | 'beta' }[] = [
+type FeatureTag = 'em-breve' | 'pronto' | 'em-testes';
+const FEATURES: { icon: string; title: string; description: string; tag: FeatureTag }[] = [
   {
     icon: 'ti-brand-whatsapp',
-    title: 'WhatsApp Business integrado',
-    description: 'Envio automático de comunicados, alertas e confirmação de cupons direto no WhatsApp do cliente e do lojista.',
-    tag: 'roadmap',
+    title: 'WhatsApp integrado',
+    description: 'Envio automático de comunicados, avisos e confirmação de cupons direto no WhatsApp do cliente e do lojista.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-device-mobile',
-    title: 'App do consumidor (PWA)',
-    description: 'Instalável no celular, sem loja de apps. Consulta de cupons, notificações push e carteira digital de prêmios.',
-    tag: 'roadmap',
+    title: 'Aplicativo do consumidor',
+    description: 'Instalável no celular, sem precisar baixar de loja de aplicativos. Consulta de cupons, avisos e carteira digital de prêmios.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-coin',
     title: 'Programa de fidelidade unificado',
-    description: 'Cashback acumulado em todas as lojas credenciadas, resgatável em qualquer comércio participante.',
-    tag: 'roadmap',
+    description: 'Dinheiro de volta acumulado em todas as lojas credenciadas, podendo ser usado em qualquer comércio participante.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-map-2',
-    title: 'Mapa interativo das lojas',
-    description: 'Vitrine geo-referenciada de Itabira com rotas, horário de funcionamento e promoções em tempo real.',
-    tag: 'roadmap',
+    title: 'Mapa das lojas em Itabira',
+    description: 'Vitrine com a localização de cada loja participante, rota, horário de funcionamento e promoções em tempo real.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-shopping-cart',
-    title: 'Marketplace digital integrado',
-    description: 'Vitrine única do comércio itabirano com checkout local, retirada na loja ou entrega por motoboy.',
-    tag: 'roadmap',
+    title: 'Vitrine digital do comércio',
+    description: 'Loja virtual única do comércio itabirano com pagamento online, retirada no balcão ou entrega por motoboy.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-credit-card',
-    title: 'Integração com PDV (Stone / Cielo / Rede)',
-    description: 'Cupons emitidos automaticamente no momento do pagamento, sem necessidade de cadastro manual.',
-    tag: 'beta',
+    title: 'Integração com a maquininha de cartão',
+    description: 'Cupons emitidos automaticamente no momento do pagamento, sem precisar digitar nada na hora da venda.',
+    tag: 'em-testes',
   },
   {
     icon: 'ti-heart-handshake',
     title: 'Selo "Compre Local"',
     description: 'Identificação visual e benefícios diferenciados para lojas que apoiam o comércio da cidade.',
-    tag: 'roadmap',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-chart-arcs',
-    title: 'BI preditivo com IA',
-    description: 'Previsão de demanda, recomendações de mix, alertas de churn e oportunidades de cross-sell entre lojas.',
-    tag: 'roadmap',
+    title: 'Análise preditiva com inteligência artificial',
+    description: 'Previsão de demanda, sugestão de mix de produtos, aviso de perda de cliente e oportunidades de venda combinada entre lojas.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-video',
-    title: 'Sorteios ao vivo via streaming',
-    description: 'Transmissão oficial dos sorteios pelo YouTube/Instagram, com auditoria pública dos números sorteados.',
+    title: 'Sorteios ao vivo pela internet',
+    description: 'Transmissão oficial dos sorteios pelo YouTube e Instagram, com confirmação pública dos números sorteados.',
     tag: 'pronto',
   },
   {
     icon: 'ti-star',
-    title: 'NPS automatizado pós-compra',
-    description: 'Pesquisa de satisfação enviada automaticamente após a venda, consolidada por loja e categoria.',
-    tag: 'beta',
+    title: 'Pesquisa de satisfação após a compra',
+    description: 'O cliente recebe automaticamente uma pesquisa rápida após cada compra. Resultado consolidado por loja e categoria.',
+    tag: 'em-testes',
   },
   {
     icon: 'ti-trophy',
-    title: 'Gamificação para consumidores',
-    description: 'Badges, ranking de cidadãos engajados, missões temáticas e recompensas exclusivas.',
-    tag: 'roadmap',
+    title: 'Conquistas e prêmios para clientes',
+    description: 'Distintivos, lista de clientes mais engajados, missões temáticas e recompensas exclusivas para quem compra no comércio local.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-calendar-event',
     title: 'Agenda de eventos do comércio',
-    description: 'Liquidações, feiras, Black Friday local, eventos culturais — sincronizada com clientes e lojas.',
-    tag: 'roadmap',
+    description: 'Liquidações, feiras, datas especiais e eventos culturais da cidade — tudo em um único calendário compartilhado com clientes e lojas.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-id-badge-2',
-    title: 'Validação Gov.br + Receita',
-    description: 'Confirmação automática do CPF do cliente e do CNPJ da loja, sem cadastro duplicado.',
-    tag: 'roadmap',
+    title: 'Validação automática de CPF e CNPJ',
+    description: 'Confirmação dos dados do cliente e da loja diretamente com fontes oficiais, sem precisar cadastrar duas vezes.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-truck-delivery',
-    title: 'Rede de motoboys integrada',
-    description: 'Lojas credenciadas compartilham rede de entrega da cidade com preço fechado por bairro.',
-    tag: 'roadmap',
+    title: 'Rede de motoboys da cidade',
+    description: 'As lojas credenciadas compartilham uma rede única de entrega em Itabira, com preço já combinado por bairro.',
+    tag: 'em-breve',
   },
   {
     icon: 'ti-camera',
-    title: 'Análise de fluxo por câmera (IA)',
-    description: 'Contagem anônima de visitantes em vitrines e ruas comerciais, sem coletar dados pessoais.',
-    tag: 'roadmap',
+    title: 'Contagem de visitantes por câmera',
+    description: 'Contagem anônima do fluxo de pessoas em vitrines e ruas comerciais, sem coletar nenhum dado pessoal.',
+    tag: 'em-breve',
   },
 ];
 
@@ -220,7 +221,7 @@ function FeaturesSection() {
     <section className="relative z-10 mt-20 sm:mt-28 max-w-6xl mx-auto w-full px-4">
       <div className="text-center mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-blue-100/80 text-[11px] uppercase font-black tracking-widest mb-4">
-          <i className="ti ti-sparkles text-[#FFC72C]"></i> Roadmap da plataforma
+          <i className="ti ti-sparkles text-[#FFC72C]"></i> Próximas funcionalidades
         </div>
         <h2 className="font-title text-3xl sm:text-4xl font-black text-white tracking-tight">
           Tudo que o Itaplan{' '}
@@ -229,7 +230,7 @@ function FeaturesSection() {
           </span>
         </h2>
         <p className="text-blue-100/70 text-sm sm:text-base max-w-2xl mx-auto mt-3 leading-relaxed">
-          Funcionalidades já entregues, em homologação e no roadmap — pensadas especificamente para
+          Funcionalidades já disponíveis, em testes e planejadas — pensadas especificamente para
           a realidade do varejo de Itabira e região.
         </p>
       </div>
@@ -246,10 +247,10 @@ function FeaturesSection() {
           <span className="w-2 h-2 rounded-full bg-[#0F8B58]"></span> Pronto
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#FFC72C]"></span> Beta / em homologação
+          <span className="w-2 h-2 rounded-full bg-[#FFC72C]"></span> Em testes
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#9BB8F2]"></span> Roadmap
+          <span className="w-2 h-2 rounded-full bg-[#9BB8F2]"></span> Em breve
         </span>
       </div>
     </section>
@@ -258,9 +259,9 @@ function FeaturesSection() {
 
 function FeatureCard({ feature }: { feature: typeof FEATURES[number] }) {
   const tagMap = {
-    pronto:  { color: '#0F8B58', label: 'Pronto', bg: 'rgba(15,139,88,0.15)' },
-    beta:    { color: '#FFC72C', label: 'Beta',   bg: 'rgba(255,199,44,0.12)' },
-    roadmap: { color: '#9BB8F2', label: 'Roadmap', bg: 'rgba(30,91,207,0.12)' },
+    'pronto':    { color: '#0F8B58', label: 'Pronto',    bg: 'rgba(15,139,88,0.15)'  },
+    'em-testes': { color: '#FFC72C', label: 'Em testes', bg: 'rgba(255,199,44,0.12)' },
+    'em-breve':  { color: '#9BB8F2', label: 'Em breve',  bg: 'rgba(30,91,207,0.12)'  },
   } as const;
   const tag = tagMap[feature.tag];
   return (

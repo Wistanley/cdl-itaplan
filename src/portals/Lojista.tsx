@@ -31,7 +31,7 @@ interface LojistaProps {
 }
 
 const NAV_ITEMS: { tab: LojistaTab; label: string; icon: string }[] = [
-  { tab: 'dashboard',   label: 'Dashboard',     icon: 'ti-layout-dashboard' },
+  { tab: 'dashboard',   label: 'Painel',        icon: 'ti-layout-dashboard' },
   { tab: 'vendas',      label: 'Registrar venda', icon: 'ti-receipt-2' },
   { tab: 'campanhas',   label: 'Campanhas',     icon: 'ti-confetti' },
   { tab: 'comunicados', label: 'Comunicados',   icon: 'ti-mail' },
@@ -358,7 +358,7 @@ function DashboardTab({
     <div className="space-y-8 animate-fade-in">
       <SectionHeader
         title={`🎄 Boas festas, ${store.nome}!`}
-        subtitle={`Sua performance na campanha ${activeCampaign.nome}`}
+        subtitle={`Seu desempenho na campanha ${activeCampaign.nome}`}
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -1064,7 +1064,7 @@ function InsightsTab({ store }: { store: Store }) {
     <div className="space-y-6 animate-fade-in">
       <SectionHeader
         title={`Inteligência — ${store.nome}`}
-        subtitle="Performance da sua loja no comércio itabirano · dados anonimizados, em conformidade LGPD."
+        subtitle="Desempenho da sua loja no comércio itabirano · dados anonimizados, em conformidade com a LGPD."
       />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

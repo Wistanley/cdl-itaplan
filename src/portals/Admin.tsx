@@ -37,7 +37,7 @@ interface AdminProps {
 }
 
 const NAV_ITEMS: { tab: AdminTab; label: string; icon: string }[] = [
-  { tab: 'dashboard',     label: 'Dashboard',         icon: 'ti-layout-dashboard' },
+  { tab: 'dashboard',     label: 'Painel',            icon: 'ti-layout-dashboard' },
   { tab: 'campanhas',     label: 'Campanhas',         icon: 'ti-confetti' },
   { tab: 'lojas',         label: 'Lojas Parceiras',   icon: 'ti-building-store' },
   { tab: 'comunicados',   label: 'Comunicados',       icon: 'ti-mail-share' },
@@ -292,7 +292,7 @@ function DashboardTab(props: AdminProps) {
               <h3 className="font-title text-lg font-black text-[#0E1A33]">Lojas em destaque</h3>
               <p className="text-xs text-[#4A5878] mt-0.5">Top emissores ordenados por cupons gerados.</p>
             </div>
-            <Badge color="blue">Ranking Itaplan</Badge>
+            <Badge color="blue">Destaques Itaplan</Badge>
           </div>
           <div className="space-y-5">
             {props.stores
@@ -1412,7 +1412,7 @@ function DocumentosTab({ documentos }: { documentos: Documento[] }) {
         />
         <StatCard
           icon="ti-shield-check"
-          label="Compliance"
+          label="Conformidade"
           value="100%"
           sub="Auditoria LGPD válida"
           color="green"
@@ -1525,10 +1525,10 @@ function InsightsTab() {
           <i className="ti ti-shield-check"></i>
         </div>
         <div className="text-xs text-[#0E1A33]">
-          <strong className="block font-black text-sm">LGPD by design</strong>
-          Nenhuma informação pessoal identificável é exibida nesta área. Os dados são agregados,
-          anonimizados e atualizados diariamente pelo time de BI. Acessos são registrados em log de
-          auditoria.
+          <strong className="block font-black text-sm">Privacidade desde o início</strong>
+          Nenhuma informação pessoal identificável é exibida nesta área. Os dados são agrupados,
+          anonimizados e atualizados diariamente pela equipe de inteligência de dados. Todos os
+          acessos ficam registrados em histórico de auditoria.
         </div>
       </div>
 
@@ -1608,23 +1608,23 @@ function InsightsTab() {
         </Card>
       </div>
 
-      {/* Share of wallet / visits */}
+      {/* Participação no gasto / nas visitas */}
       <Card>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
           <div>
-            <h4 className="font-title font-black text-[#0E1A33] text-base">Share of Wallet × Share of Visits</h4>
+            <h4 className="font-title font-black text-[#0E1A33] text-base">Participação no gasto × Participação nas visitas</h4>
             <p className="text-xs text-[#4A5878] mt-1">
-              Percentual do gasto total versus percentual de visitas por categoria.
+              Quanto do gasto total e quanto das visitas do consumidor cada categoria representa.
             </p>
           </div>
           <div className="flex items-center gap-4 text-xs">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 bg-[#0A2A6E] rounded-sm"></span>
-              <span className="text-[#4A5878] font-bold">Share of Wallet</span>
+              <span className="text-[#4A5878] font-bold">Participação no gasto</span>
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 bg-[#FFC72C] rounded-sm"></span>
-              <span className="text-[#4A5878] font-bold">Share of Visits</span>
+              <span className="text-[#4A5878] font-bold">Participação nas visitas</span>
             </div>
           </div>
         </div>
@@ -1787,7 +1787,7 @@ function ConfiguracoesTab() {
             <SettingToggle
               icon="ti-history"
               title="Log de auditoria"
-              description="Todo acesso a dados sensíveis é registrado para auditoria do DPO."
+              description="Todo acesso a dados sensíveis é registrado para auditoria do encarregado de dados."
               enabled
             />
             <SettingToggle
@@ -1806,7 +1806,7 @@ function ConfiguracoesTab() {
 
           <div className="mt-6 pt-5 border-t border-[#EEF2F8] flex items-center justify-between">
             <div className="text-xs text-[#4A5878]">
-              <strong className="block text-[#0E1A33] text-sm">DPO Responsável</strong>
+              <strong className="block text-[#0E1A33] text-sm">Encarregado de Dados</strong>
               Helena Martins · helena.martins@itaplan.com.br
             </div>
             <button className="px-4 py-2 bg-[#0A2A6E] hover:bg-[#103A8C] text-white text-xs font-bold rounded-xl transition-colors">
@@ -1868,14 +1868,14 @@ function ConfiguracoesTab() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          <IntegrationCard icon="ti-credit-card" title="Stone / Cielo" desc="Conciliação por PDV" />
-          <IntegrationCard icon="ti-receipt" title="SEFAZ NFC-e" desc="Validação de notas" />
-          <IntegrationCard icon="ti-brand-whatsapp" title="WhatsApp Business" desc="Comunicados móveis" />
-          <IntegrationCard icon="ti-mail" title="SendGrid" desc="E-mails transacionais" />
-          <IntegrationCard icon="ti-chart-dots" title="Google Analytics" desc="Web analytics" />
-          <IntegrationCard icon="ti-brand-meta" title="Meta Pixel" desc="Conversões e remarketing" />
-          <IntegrationCard icon="ti-camera" title="CFTV inteligente" desc="Fluxo por câmera (anonimizado)" />
-          <IntegrationCard icon="ti-id-badge-2" title="Gov.br" desc="Validação de CPF" />
+          <IntegrationCard icon="ti-credit-card" title="Maquininha de cartão" desc="Conciliação automática das vendas" />
+          <IntegrationCard icon="ti-receipt" title="Receita / SEFAZ" desc="Validação das notas fiscais" />
+          <IntegrationCard icon="ti-brand-whatsapp" title="WhatsApp" desc="Avisos pelo celular do cliente" />
+          <IntegrationCard icon="ti-mail" title="Envio de e-mails" desc="Mensagens automáticas após a compra" />
+          <IntegrationCard icon="ti-chart-dots" title="Análise do site" desc="Acompanhamento das visitas" />
+          <IntegrationCard icon="ti-target-arrow" title="Anúncios direcionados" desc="Campanhas de retorno do cliente" />
+          <IntegrationCard icon="ti-camera" title="Câmeras inteligentes" desc="Contagem anônima do movimento" />
+          <IntegrationCard icon="ti-id-badge-2" title="Confirmação de CPF" desc="Verificação dos dados pelo Gov.br" />
         </div>
       </Card>
     </div>
