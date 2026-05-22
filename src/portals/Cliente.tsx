@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import type { Portal, Coupon, Campaign } from '../types';
 import { formatCPF, formatCurrency } from '../utils';
 import { ItaplanLogo } from '../components/ui';
+import { Snowfall, ChristmasLights, ChristmasBadge } from '../components/christmas';
 
 interface ClienteProps {
   setPortal: (p: Portal) => void;
@@ -59,20 +60,34 @@ export default function Cliente({ setPortal, cpfDatabase, campaigns, activeCampa
   return (
     <div
       id="portal-cliente"
-      className="min-h-screen itp-gradient-hero text-slate-100 flex flex-col justify-between animate-fade-in font-sans relative overflow-hidden"
+      className="min-h-screen text-slate-100 flex flex-col justify-between animate-fade-in font-sans relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(900px 500px at 80% -10%, rgba(180,42,42,0.35), transparent 60%),' +
+          'radial-gradient(700px 400px at -10% 110%, rgba(15,139,88,0.30), transparent 60%),' +
+          'linear-gradient(135deg, #06163A 0%, #0A2A6E 50%, #1a0d3a 100%)',
+      }}
     >
+      {/* Snowfall overlay */}
+      <Snowfall count={50} density="normal" />
+
       {/* Decorative dots */}
       <div
-        className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{
           backgroundImage: 'radial-gradient(white 1px, transparent 1px)',
           backgroundSize: '24px 24px',
         }}
       ></div>
 
-      <header className="backdrop-blur-md bg-[#06163A]/60 border-b border-[#FFC72C]/10 py-4 px-6 sticky top-0 z-30 shadow-lg">
-        <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4">
-          <ItaplanLogo size="md" invert />
+      <header className="backdrop-blur-md bg-[#06163A]/60 border-b border-[#FFC72C]/10 sticky top-0 z-30 shadow-lg">
+        {/* Christmas lights string */}
+        <ChristmasLights count={40} />
+        <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4 py-3 px-6">
+          <div className="flex items-center gap-3">
+            <ItaplanLogo size="md" invert />
+            <span className="hidden sm:inline-block text-2xl">🎄</span>
+          </div>
           <button
             id="btn-client-back"
             onClick={() => setPortal('landing')}
@@ -83,30 +98,38 @@ export default function Cliente({ setPortal, cpfDatabase, campaigns, activeCampa
         </div>
       </header>
 
-      <div className="max-w-[820px] mx-auto w-full px-4 pt-12 pb-6 text-center space-y-4 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FFC72C]/10 border border-[#FFC72C]/20 text-[#FFC72C] text-[11px] uppercase font-black tracking-widest shadow-inner">
-          <i className="ti ti-ticket"></i> Área do Cliente Itaplan
-        </div>
+      <div className="max-w-[820px] mx-auto w-full px-4 pt-10 sm:pt-12 pb-6 text-center space-y-4 relative z-10">
+        <ChristmasBadge>Natal Premiado · Itabira 2025</ChristmasBadge>
         <h1 className="font-title text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
-          Seus números da sorte
+          🎁 Seus números{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC72C] via-[#FFE08A] to-[#F5B800]">
+            da sorte
+          </span>
         </h1>
-        <p className="text-sm text-blue-100/70 max-w-xl mx-auto leading-relaxed">
+        <p className="text-sm text-blue-100/70 max-w-xl mx-auto leading-relaxed px-2">
           Consulte por CPF os cupons emitidos em qualquer campanha Itaplan — atual ou anterior. Os
           dados são exibidos apenas para você, anonimizados em registros públicos.
         </p>
-        <span className="inline-flex items-center gap-1.5 text-xs text-[#FFC72C] bg-[#FFC72C]/10 px-3.5 py-1.5 rounded-full border border-[#FFC72C]/20">
-          <i className="ti ti-calendar-event"></i> Próximo sorteio em <strong>{activeCampaign.sorteio.split('-').reverse().join('/')}</strong> · {activeCampaign.nome}
-        </span>
+        <div className="inline-flex flex-col sm:flex-row gap-2 items-center justify-center">
+          <span className="inline-flex items-center gap-1.5 text-xs text-[#FFC72C] bg-[#FFC72C]/10 px-3.5 py-1.5 rounded-full border border-[#FFC72C]/20">
+            <i className="ti ti-calendar-event"></i> Sorteio em{' '}
+            <strong>{activeCampaign.sorteio.split('-').reverse().join('/')}</strong>
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs text-white bg-[#B42A2A]/30 px-3.5 py-1.5 rounded-full border border-[#B42A2A]/40">
+            <i className="ti ti-gift"></i> Prêmio: 1 carro 0km + motos + vales
+          </span>
+        </div>
       </div>
 
       <div className="max-w-[820px] mx-auto w-full px-4 flex-1 pb-16 space-y-8 relative z-10">
         {/* Search */}
-        <div className="bg-[#0f233d]/70 backdrop-blur-md p-6 rounded-2xl border border-[#1E5BCF]/20 shadow-2xl">
+        <div className="bg-[#0f233d]/70 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-[#FFC72C]/20 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B42A2A] via-[#FFC72C] to-[#0F8B58]"></div>
           <div className="flex items-center gap-2.5 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-[#1E5BCF]/15 text-[#9BB8F2] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#B42A2A]/20 text-[#FFC72C] flex items-center justify-center">
               <i className="ti ti-search"></i>
             </div>
-            <h4 className="font-title text-sm font-black text-white">Digite seu CPF</h4>
+            <h4 className="font-title text-sm font-black text-white">Consulte seu CPF</h4>
           </div>
           <form onSubmit={handleSearch} className="space-y-4">
             <div className="flex flex-col sm:flex-row gap-3">
@@ -187,18 +210,24 @@ export default function Cliente({ setPortal, cpfDatabase, campaigns, activeCampa
                 {/* Coupons grouped by campaign */}
                 {couponsByCampaign.map(({ campanha, cupons }) => {
                   const isActive = campanha.status === 'ativa';
+                  const isNatal = campanha.tema === 'natal';
                   return (
                     <section key={campanha.id} className="space-y-3">
-                      <div className="flex items-center justify-between border-l-4 border-[#FFC72C] pl-3">
+                      <div className={`flex items-center justify-between border-l-4 pl-3 ${isNatal && isActive ? 'border-[#B42A2A]' : 'border-[#FFC72C]'}`}>
                         <div>
-                          <h5 className="font-title text-base font-black text-white">{campanha.nome}</h5>
+                          <h5 className="font-title text-base font-black text-white flex items-center gap-1.5">
+                            {isNatal && <span>🎄</span>}
+                            {campanha.nome}
+                          </h5>
                           <p className="text-[11px] text-blue-200/70">
                             {cupons.length} {cupons.length === 1 ? 'cupom' : 'cupons'} · {campanha.regra}
                           </p>
                         </div>
                         <span
-                          className={`text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full ${
-                            isActive
+                          className={`text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full whitespace-nowrap ${
+                            isNatal && isActive
+                              ? 'bg-[#B42A2A]/30 text-[#FFE08A] border border-[#B42A2A]/50'
+                              : isActive
                               ? 'bg-[#0F8B58]/20 text-[#7AE6B4] border border-[#0F8B58]/30'
                               : 'bg-white/5 text-blue-200/70 border border-white/10'
                           }`}
@@ -211,18 +240,29 @@ export default function Cliente({ setPortal, cpfDatabase, campaigns, activeCampa
                         {cupons.map((coupon, idx) => (
                           <div
                             key={idx}
-                            className="relative bg-gradient-to-br from-[#0c203b] to-[#071324] rounded-2xl border border-[#1E5BCF]/10 hover:border-[#FFC72C]/30 p-4 shadow-lg flex flex-col justify-between gap-2 group transition-all"
+                            className={`relative rounded-2xl p-4 shadow-lg flex flex-col justify-between gap-2 group transition-all overflow-hidden ${
+                              isNatal && isActive
+                                ? 'bg-gradient-to-br from-[#3a0e0e] via-[#1a0820] to-[#071324] border-2 border-[#B42A2A]/40 hover:border-[#FFC72C]/60'
+                                : 'bg-gradient-to-br from-[#0c203b] to-[#071324] border border-[#1E5BCF]/10 hover:border-[#FFC72C]/30'
+                            }`}
                           >
+                            {isNatal && isActive && (
+                              <span className="absolute -top-2 -right-2 text-xl rotate-12 opacity-70">🎁</span>
+                            )}
                             <div className="flex items-center justify-between">
                               <span className="text-[10px] font-black uppercase tracking-widest text-blue-200/50">
-                                Número da sorte
+                                {isNatal && isActive ? '🎅 Nº da Sorte' : 'Número da sorte'}
                               </span>
                               <span className="text-[10px] text-blue-300/80 font-mono">{coupon.data}</span>
                             </div>
-                            <div className="font-title text-xl font-black text-[#FFC72C] group-hover:text-[#FFE08A] tracking-wider">
+                            <div className={`font-title text-xl font-black tracking-wider ${
+                              isNatal && isActive
+                                ? 'text-[#FFE08A] group-hover:text-white'
+                                : 'text-[#FFC72C] group-hover:text-[#FFE08A]'
+                            }`}>
                               {coupon.numero}
                             </div>
-                            <div className="flex items-center justify-between text-[11px] pt-1.5 border-t border-[#1E5BCF]/10">
+                            <div className="flex items-center justify-between text-[11px] pt-1.5 border-t border-white/5">
                               <span className="font-bold text-slate-300 truncate max-w-[170px]">{coupon.nomeLoja}</span>
                               <span className="font-semibold text-slate-400">{formatCurrency(coupon.valor)}</span>
                             </div>
@@ -254,8 +294,9 @@ export default function Cliente({ setPortal, cpfDatabase, campaigns, activeCampa
                   </p>
                 </div>
                 <p className="text-xs text-slate-400 max-w-md mx-auto leading-relaxed">
-                  Para acumular cupons, realize compras nas lojas participantes da campanha{' '}
-                  <strong className="text-white">{activeCampaign.nome}</strong> e solicite o cadastro no caixa.
+                  Para entrar no <strong className="text-[#FFC72C]">{activeCampaign.nome} 🎄</strong>,
+                  faça compras a partir de <strong>R$ {activeCampaign.regraValor.toFixed(2).replace('.', ',')}</strong>{' '}
+                  nas lojas credenciadas em Itabira e peça seu cupom no caixa.
                 </p>
               </div>
             )}
@@ -263,8 +304,8 @@ export default function Cliente({ setPortal, cpfDatabase, campaigns, activeCampa
         )}
       </div>
 
-      <div className="bg-[#040a14]/80 backdrop-blur py-6 text-center text-xs text-blue-200/40 border-t border-[#1E5BCF]/10 relative z-10">
-        <p className="px-4">Itaplan · Protótipo de apresentação · Dados em memória, sem persistência</p>
+      <div className="bg-[#040a14]/80 backdrop-blur py-6 text-center text-xs text-blue-200/40 border-t border-[#FFC72C]/10 relative z-10">
+        <p className="px-4">🎄 Itaplan · Comércio itabirano · Boas festas e boa sorte!</p>
       </div>
     </div>
   );

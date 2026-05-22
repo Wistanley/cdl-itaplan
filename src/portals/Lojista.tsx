@@ -12,6 +12,7 @@ import type {
 } from '../types';
 import { formatCPF, maskCPF, formatCurrency, formatCompactBRL, formatNumber, formatDateBR, initials } from '../utils';
 import { Badge, StatCard, Card, ItaplanLogo, Progress, EmptyState, SectionHeader } from '../components/ui';
+import { Snowfall, ChristmasLights, ChristmasBadge } from '../components/christmas';
 
 interface LojistaProps {
   setPortal: (p: Portal) => void;
@@ -87,14 +88,22 @@ export default function Lojista(props: LojistaProps) {
 
   return (
     <div id="portal-lojista" className="bg-[#F6F8FC] min-h-screen animate-fade-in flex flex-col">
+      {/* Christmas top ribbon */}
+      <div className="bg-gradient-to-r from-[#7A1A1A] via-[#B42A2A] to-[#7A1A1A] text-[#FFC72C] text-[11px] font-black uppercase tracking-widest text-center py-1.5 px-4 flex items-center justify-center gap-2">
+        <span>🎄</span>
+        <span className="hidden sm:inline">Natal Premiado · Sorteie {props.activeCampaign.premios} prêmios incríveis · {props.activeCampaign.regra}</span>
+        <span className="sm:hidden">Natal Premiado · {props.activeCampaign.regra}</span>
+        <span>🎁</span>
+      </div>
       {/* Header */}
-      <header className="bg-white border-b border-[#DDE3EE] py-3 px-6 sticky top-0 z-30 shadow-xs">
-        <div className="max-w-[1500px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+      <header className="bg-white border-b border-[#DDE3EE] sticky top-0 z-30 shadow-xs relative">
+        <ChristmasLights count={36} className="!absolute top-0" />
+        <div className="max-w-[1500px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 py-3 px-4 sm:px-6 pt-5">
+          <div className="flex items-center gap-3 w-full sm:w-auto">
             <ItaplanLogo size="md" />
-            <div className="border-l border-[#DDE3EE] pl-3">
+            <div className="border-l border-[#DDE3EE] pl-3 flex-1 min-w-0">
               <select
-                className="font-title text-base font-black tracking-tight text-[#0E1A33] cursor-pointer hover:text-[#1E5BCF] bg-transparent border-none py-0 pl-0 pr-6 focus:ring-0 outline-none"
+                className="font-title text-base font-black tracking-tight text-[#0E1A33] cursor-pointer hover:text-[#1E5BCF] bg-transparent border-none py-0 pl-0 pr-6 focus:ring-0 outline-none max-w-full"
                 value={activeStoreId}
                 onChange={(e) => setActiveStoreId(Number(e.target.value))}
               >
@@ -104,15 +113,16 @@ export default function Lojista(props: LojistaProps) {
                   </option>
                 ))}
               </select>
-              <p className="text-[11px] text-[#4A5878] font-medium">
-                {selectedStore.loja} · {selectedStore.piso} · {selectedStore.responsavel}
+              <p className="text-[11px] text-[#4A5878] font-medium truncate">
+                {selectedStore.bairro} · {selectedStore.endereco}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <Badge color="green">
               <span className="w-1.5 h-1.5 bg-[#0F8B58] rounded-full animate-pulse"></span>
-              Operador online
+              <span className="hidden sm:inline">Operador online</span>
+              <span className="sm:hidden">Online</span>
             </Badge>
             <button
               id="btn-lojista-logout"
@@ -127,9 +137,9 @@ export default function Lojista(props: LojistaProps) {
 
       <div className="flex-1 max-w-[1500px] w-full mx-auto flex flex-col md:flex-row">
         {/* Sidebar */}
-        <aside className="w-full md:w-[230px] bg-white border-r border-[#DDE3EE] p-4 flex flex-col gap-6 md:min-h-[calc(100vh-69px)]">
-          <div className="space-y-1">
-            <p className="text-[10px] font-black uppercase text-[#8893AE] tracking-widest px-3 mb-3">
+        <aside className="w-full md:w-[230px] bg-white border-b md:border-b-0 md:border-r border-[#DDE3EE] p-3 md:p-4 flex flex-col gap-4 md:gap-6 md:min-h-[calc(100vh-69px)]">
+          <div className="flex md:flex-col md:space-y-1 gap-1 overflow-x-auto md:overflow-visible -mx-3 md:mx-0 px-3 md:px-0 scrollbar-thin">
+            <p className="hidden md:block text-[10px] font-black uppercase text-[#8893AE] tracking-widest px-3 mb-3">
               Portal do lojista
             </p>
             {NAV_ITEMS.map((item) => {
@@ -138,14 +148,14 @@ export default function Lojista(props: LojistaProps) {
                 <button
                   key={item.tab}
                   onClick={() => setTab(item.tab)}
-                  className={`w-full text-left px-3.5 py-2.5 rounded-xl text-sm flex items-center gap-2.5 transition-all duration-200 cursor-pointer ${
+                  className={`flex-shrink-0 md:w-full text-left px-3 md:px-3.5 py-2 md:py-2.5 rounded-xl text-xs md:text-sm flex items-center gap-2 md:gap-2.5 transition-all duration-200 cursor-pointer whitespace-nowrap ${
                     isActive
                       ? 'bg-[#0A2A6E] text-white font-bold shadow-md'
                       : 'text-[#4A5878] font-semibold hover:bg-[#EEF4FE] hover:text-[#0A2A6E]'
                   }`}
                 >
                   <i
-                    className={`ti ${item.icon} text-lg ${
+                    className={`ti ${item.icon} text-base md:text-lg ${
                       isActive ? 'text-[#FFC72C]' : 'text-[#8893AE]'
                     }`}
                   ></i>
@@ -155,20 +165,21 @@ export default function Lojista(props: LojistaProps) {
             })}
           </div>
 
-          <div className="mt-auto bg-gradient-to-br from-[#FFF8DD] to-[#FFE2C2] border border-[#FFC72C]/40 rounded-2xl p-4">
-            <p className="text-[10px] font-black uppercase text-[#8A6204] tracking-wider">Sua loja</p>
-            <div className="font-title text-lg font-black text-[#0E1A33] mt-1 leading-tight">
+          <div className="hidden md:block mt-auto bg-gradient-to-br from-[#7A1A1A] via-[#B42A2A] to-[#5a0e0e] text-white border border-[#FFC72C]/30 rounded-2xl p-4 relative overflow-hidden">
+            <span className="absolute -top-2 -right-2 text-3xl opacity-40 rotate-12">🎄</span>
+            <p className="text-[10px] font-black uppercase text-[#FFC72C] tracking-wider relative">Natal Premiado</p>
+            <div className="font-title text-base font-black text-white mt-1 leading-tight relative">
               {selectedStore.nome}
             </div>
-            <div className="h-[1px] bg-[#FFC72C]/30 my-2"></div>
-            <div className="space-y-1.5 text-[11px] text-[#0E1A33]">
+            <div className="h-[1px] bg-[#FFC72C]/30 my-2 relative"></div>
+            <div className="space-y-1.5 text-[11px] text-white/90 relative">
               <div className="flex justify-between">
                 <span>Engajamento</span>
-                <strong>{selectedStore.engajamento}%</strong>
+                <strong className="text-[#FFE08A]">{selectedStore.engajamento}%</strong>
               </div>
               <div className="flex justify-between">
                 <span>Cupons</span>
-                <strong>{selectedStore.cuponsEmitidos}</strong>
+                <strong className="text-[#FFE08A]">{selectedStore.cuponsEmitidos}</strong>
               </div>
             </div>
           </div>
@@ -224,7 +235,16 @@ function LoginView({
   activeCampaign: Campaign;
 }) {
   return (
-    <div className="min-h-screen itp-gradient-hero flex flex-col justify-center items-center py-12 px-4 relative overflow-hidden">
+    <div
+      className="min-h-screen flex flex-col justify-center items-center py-12 px-4 relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(800px 500px at 80% -10%, rgba(180,42,42,0.30), transparent 60%),' +
+          'radial-gradient(600px 400px at -10% 110%, rgba(15,139,88,0.30), transparent 60%),' +
+          'linear-gradient(135deg, #06163A 0%, #0A2A6E 60%, #103A8C 100%)',
+      }}
+    >
+      <Snowfall count={45} />
       <div
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
@@ -232,15 +252,22 @@ function LoginView({
           backgroundSize: '24px 24px',
         }}
       ></div>
-      <div className="max-w-md w-full bg-white rounded-3xl border border-[#DDE3EE] p-8 shadow-2xl relative animate-scale-up">
-        <div className="flex justify-center -mt-16 mb-4">
+      <div className="max-w-md w-full bg-white rounded-3xl border border-[#DDE3EE] p-6 sm:p-8 shadow-2xl relative animate-scale-up overflow-hidden">
+        {/* Christmas lights on top */}
+        <div className="absolute left-0 right-0 -top-1">
+          <ChristmasLights count={26} />
+        </div>
+        <div className="flex justify-center -mt-12 mb-4 pt-4">
           <div className="w-16 h-16 rounded-2xl itp-gradient-primary flex items-center justify-center shadow-lg relative overflow-hidden">
             <span className="font-title font-black text-[#FFC72C] text-2xl">i.</span>
             <div className="absolute bottom-0 left-0 right-0 h-1.5 itp-gradient-gold"></div>
           </div>
         </div>
         <div className="text-center mb-6">
-          <h3 className="font-title text-2xl font-black text-[#0E1A33]">Portal do Lojista</h3>
+          <div className="inline-flex justify-center mb-2">
+            <ChristmasBadge>Natal Premiado · Itabira</ChristmasBadge>
+          </div>
+          <h3 className="font-title text-2xl font-black text-[#0E1A33]">Portal do Lojista 🎄</h3>
           <p className="text-xs text-[#4A5878] mt-1 font-semibold">
             Itaplan · {activeCampaign.nome}
           </p>
@@ -330,7 +357,7 @@ function DashboardTab({
   return (
     <div className="space-y-8 animate-fade-in">
       <SectionHeader
-        title={`Bem-vinda(o) à ${store.nome}`}
+        title={`🎄 Boas festas, ${store.nome}!`}
         subtitle={`Sua performance na campanha ${activeCampaign.nome}`}
       />
 
@@ -356,9 +383,22 @@ function DashboardTab({
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Campaign callout */}
-        <Card className="lg:col-span-2 itp-gradient-primary text-white relative overflow-hidden">
-          <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-[#FFC72C]/10"></div>
-          <div className="flex items-start justify-between mb-4 relative">
+        <Card
+          className="lg:col-span-2 text-white relative overflow-hidden"
+          padding="md"
+        >
+          <div
+            className="absolute inset-0 -z-0"
+            style={{
+              background:
+                'radial-gradient(400px 250px at 90% 10%, rgba(180,42,42,0.4), transparent 60%),' +
+                'radial-gradient(300px 200px at 10% 90%, rgba(15,139,88,0.3), transparent 60%),' +
+                'linear-gradient(135deg, #0A2A6E 0%, #103A8C 60%, #1a0d3a 100%)',
+            }}
+          ></div>
+          <span className="absolute top-2 right-3 text-3xl opacity-70 rotate-12 z-0">🎁</span>
+          <span className="absolute bottom-2 left-3 text-2xl opacity-50 z-0">🎄</span>
+          <div className="flex items-start justify-between mb-4 relative z-10">
             <Badge color="gold" className="!bg-[#FFC72C] !text-[#0E1A33] !border-transparent">
               <i className="ti ti-flame"></i> Campanha ativa
             </Badge>
@@ -366,25 +406,25 @@ function DashboardTab({
               Sorteio em {formatDateBR(activeCampaign.sorteio)}
             </span>
           </div>
-          <h3 className="font-title text-2xl font-black tracking-tight">{activeCampaign.nome}</h3>
-          <p className="text-sm text-blue-100/80 mt-1">{activeCampaign.regra}</p>
-          <p className="text-xs text-blue-100/60 mt-2">{activeCampaign.premiosDescricao}</p>
+          <h3 className="font-title text-2xl font-black tracking-tight relative z-10">{activeCampaign.nome}</h3>
+          <p className="text-sm text-blue-100/80 mt-1 relative z-10">{activeCampaign.regra}</p>
+          <p className="text-xs text-blue-100/60 mt-2 relative z-10">{activeCampaign.premiosDescricao}</p>
 
-          <div className="mt-6 grid grid-cols-3 gap-4">
+          <div className="mt-6 grid grid-cols-3 gap-4 relative z-10">
             <div>
               <p className="text-[10px] uppercase tracking-wider text-[#FFC72C] font-black">Sua loja</p>
-              <p className="font-title text-2xl font-black mt-1">{store.cuponsEmitidos}</p>
+              <p className="font-title text-xl sm:text-2xl font-black mt-1">{store.cuponsEmitidos}</p>
               <p className="text-[10px] text-blue-100/60">cupons emitidos</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-wider text-[#FFC72C] font-black">Ticket médio</p>
-              <p className="font-title text-2xl font-black mt-1">{formatCurrency(store.ticketMedio).replace('R$', 'R$ ')}</p>
+              <p className="font-title text-xl sm:text-2xl font-black mt-1">{formatCurrency(store.ticketMedio)}</p>
               <p className="text-[10px] text-blue-100/60">por venda</p>
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-wider text-[#FFC72C] font-black">Engajamento</p>
-              <p className="font-title text-2xl font-black mt-1">{store.engajamento}%</p>
-              <p className="text-[10px] text-blue-100/60">vs. shopping</p>
+              <p className="font-title text-xl sm:text-2xl font-black mt-1">{store.engajamento}%</p>
+              <p className="text-[10px] text-blue-100/60">vs. Itabira</p>
             </div>
           </div>
         </Card>
@@ -973,7 +1013,7 @@ function DocumentosTab({ documentos }: { documentos: Documento[] }) {
         <i className="ti ti-info-circle text-lg mt-0.5"></i>
         <span>
           Documentos confidenciais (relatórios financeiros, contratos e auditorias) ficam restritos
-          à administração do shopping. Para solicitar acesso, fale com seu gerente de relacionamento.
+          à administração do Itaplan. Para solicitar acesso, fale com seu gerente de relacionamento.
         </span>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -1024,7 +1064,7 @@ function InsightsTab({ store }: { store: Store }) {
     <div className="space-y-6 animate-fade-in">
       <SectionHeader
         title={`Inteligência — ${store.nome}`}
-        subtitle="Performance da sua loja no Itaplan · dados anonimizados, em conformidade LGPD."
+        subtitle="Performance da sua loja no comércio itabirano · dados anonimizados, em conformidade LGPD."
       />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -1046,7 +1086,7 @@ function InsightsTab({ store }: { store: Store }) {
           icon="ti-ticket"
           label="Engajamento campanha"
           value={`${store.engajamento}%`}
-          sub="vs. média do shopping (81%)"
+          sub="vs. média do comércio Itabira (81%)"
           color="gold"
           trend={{ value: '+7%', up: true }}
         />

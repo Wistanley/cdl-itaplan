@@ -129,3 +129,55 @@ body {
     radial-gradient(900px 500px at -10% 110%, rgba(30,91,207,0.35), transparent 60%),
     linear-gradient(135deg, #06163A 0%, #0A2A6E 60%, #103A8C 100%);
 }
+
+/* ===========================================
+   CHRISTMAS THEME
+   =========================================== */
+@keyframes snowfall {
+  0%   { transform: translate3d(0, -10vh, 0) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.9; }
+  100% { transform: translate3d(40px, 110vh, 0) rotate(360deg); opacity: 0; }
+}
+@keyframes snowfall-sway {
+  0%   { transform: translate3d(0, -10vh, 0) rotate(0deg);     opacity: 0; }
+  10%  { opacity: 0.85; }
+  50%  { transform: translate3d(-30px, 50vh, 0) rotate(180deg); }
+  90%  { opacity: 0.85; }
+  100% { transform: translate3d(20px, 110vh, 0) rotate(360deg); opacity: 0; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); filter: blur(0.5px); }
+  50%      { opacity: 1;   transform: scale(1.15); filter: blur(0); }
+}
+@keyframes garland-glow {
+  0%, 100% { box-shadow: 0 0 8px currentColor, 0 0 14px currentColor; }
+  50%      { box-shadow: 0 0 4px currentColor, 0 0 8px currentColor; }
+}
+
+.snowflake {
+  position: absolute;
+  top: 0;
+  color: #ffffff;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  text-shadow: 0 0 6px rgba(255,255,255,0.6);
+}
+
+.christmas-light {
+  display: inline-block;
+  width: 8px;
+  height: 10px;
+  border-radius: 4px 4px 6px 6px;
+  animation: twinkle 1.6s ease-in-out infinite, garland-glow 1.6s ease-in-out infinite;
+}
+
+.christmas-garland {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1a3a1a, #2d5c2d, #1a3a1a);
+}

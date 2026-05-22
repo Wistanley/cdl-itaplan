@@ -55,8 +55,8 @@ export interface Store {
   nome: string;
   responsavel: string;
   categoria: string;
-  piso: string;
-  loja: string;
+  bairro: string;
+  endereco: string;
   cuponsEmitidos: number;
   vendasRegistradas: number;
   meta: number;

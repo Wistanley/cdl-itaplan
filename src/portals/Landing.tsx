@@ -33,7 +33,7 @@ export default function Landing({ setPortal, activeCampaign, totalLojas, totalCu
             <i className="ti ti-shield-check text-[#FFC72C]"></i> Plataforma LGPD-ready
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <i className="ti ti-building text-[#FFC72C]"></i> Itaplan Shopping
+            <i className="ti ti-map-pin text-[#FFC72C]"></i> Itabira · Minas Gerais
           </span>
         </div>
       </header>
@@ -46,18 +46,19 @@ export default function Landing({ setPortal, activeCampaign, totalLojas, totalCu
         </div>
 
         {/* Title */}
-        <h1 className="font-title text-4xl sm:text-5xl md:text-[64px] font-black text-white leading-[1.05] tracking-tight max-w-4xl">
+        <h1 className="font-title text-4xl sm:text-5xl md:text-[64px] font-black text-white leading-[1.05] tracking-tight max-w-4xl px-2">
           A central de relacionamento{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC72C] via-[#FFE08A] to-[#F5B800]">
-            do seu shopping
+            do comércio itabirano
           </span>
           .
         </h1>
 
-        <p className="mt-6 text-blue-100/80 text-base sm:text-lg max-w-2xl font-medium leading-relaxed">
-          Campanhas multi-temáticas, comunicados oficiais, documentos sensíveis em ambiente seguro
-          e inteligência de dados anonimizada — tudo o que antes vivia disperso em e-mails, agora
-          centralizado em uma única plataforma.
+        <p className="mt-6 text-blue-100/80 text-base sm:text-lg max-w-2xl font-medium leading-relaxed px-2">
+          Campanhas multi-temáticas, comunicados oficiais entre lojas, documentos sensíveis em
+          ambiente seguro e inteligência de dados anonimizada — tudo o que antes vivia disperso em
+          e-mails e grupos de WhatsApp, agora centralizado em uma única plataforma para o comércio
+          de Itabira.
         </p>
 
         {/* Trust strip */}
@@ -105,12 +106,178 @@ export default function Landing({ setPortal, activeCampaign, totalLojas, totalCu
         </div>
       </div>
 
+      {/* Features section */}
+      <FeaturesSection />
+
       {/* Footer */}
-      <footer className="text-center text-[11px] text-blue-100/50 mt-12 relative z-10 max-w-4xl mx-auto">
+      <footer className="text-center text-[11px] text-blue-100/50 mt-12 relative z-10 max-w-4xl mx-auto px-4">
         <p className="font-semibold">
-          Itaplan • Protótipo interativo de apresentação · Sem persistência em banco · Dados em memória
+          Itaplan · Protótipo interativo · Comércio itabirano · Dados em memória, sem persistência
         </p>
       </footer>
+    </div>
+  );
+}
+
+// ==========================================
+// FEATURES SECTION — funcionalidades planejadas
+// ==========================================
+const FEATURES: { icon: string; title: string; description: string; tag: 'roadmap' | 'pronto' | 'beta' }[] = [
+  {
+    icon: 'ti-brand-whatsapp',
+    title: 'WhatsApp Business integrado',
+    description: 'Envio automático de comunicados, alertas e confirmação de cupons direto no WhatsApp do cliente e do lojista.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-device-mobile',
+    title: 'App do consumidor (PWA)',
+    description: 'Instalável no celular, sem loja de apps. Consulta de cupons, notificações push e carteira digital de prêmios.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-coin',
+    title: 'Programa de fidelidade unificado',
+    description: 'Cashback acumulado em todas as lojas credenciadas, resgatável em qualquer comércio participante.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-map-2',
+    title: 'Mapa interativo das lojas',
+    description: 'Vitrine geo-referenciada de Itabira com rotas, horário de funcionamento e promoções em tempo real.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-shopping-cart',
+    title: 'Marketplace digital integrado',
+    description: 'Vitrine única do comércio itabirano com checkout local, retirada na loja ou entrega por motoboy.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-credit-card',
+    title: 'Integração com PDV (Stone / Cielo / Rede)',
+    description: 'Cupons emitidos automaticamente no momento do pagamento, sem necessidade de cadastro manual.',
+    tag: 'beta',
+  },
+  {
+    icon: 'ti-heart-handshake',
+    title: 'Selo "Compre Local"',
+    description: 'Identificação visual e benefícios diferenciados para lojas que apoiam o comércio da cidade.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-chart-arcs',
+    title: 'BI preditivo com IA',
+    description: 'Previsão de demanda, recomendações de mix, alertas de churn e oportunidades de cross-sell entre lojas.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-video',
+    title: 'Sorteios ao vivo via streaming',
+    description: 'Transmissão oficial dos sorteios pelo YouTube/Instagram, com auditoria pública dos números sorteados.',
+    tag: 'pronto',
+  },
+  {
+    icon: 'ti-star',
+    title: 'NPS automatizado pós-compra',
+    description: 'Pesquisa de satisfação enviada automaticamente após a venda, consolidada por loja e categoria.',
+    tag: 'beta',
+  },
+  {
+    icon: 'ti-trophy',
+    title: 'Gamificação para consumidores',
+    description: 'Badges, ranking de cidadãos engajados, missões temáticas e recompensas exclusivas.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-calendar-event',
+    title: 'Agenda de eventos do comércio',
+    description: 'Liquidações, feiras, Black Friday local, eventos culturais — sincronizada com clientes e lojas.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-id-badge-2',
+    title: 'Validação Gov.br + Receita',
+    description: 'Confirmação automática do CPF do cliente e do CNPJ da loja, sem cadastro duplicado.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-truck-delivery',
+    title: 'Rede de motoboys integrada',
+    description: 'Lojas credenciadas compartilham rede de entrega da cidade com preço fechado por bairro.',
+    tag: 'roadmap',
+  },
+  {
+    icon: 'ti-camera',
+    title: 'Análise de fluxo por câmera (IA)',
+    description: 'Contagem anônima de visitantes em vitrines e ruas comerciais, sem coletar dados pessoais.',
+    tag: 'roadmap',
+  },
+];
+
+function FeaturesSection() {
+  return (
+    <section className="relative z-10 mt-20 sm:mt-28 max-w-6xl mx-auto w-full px-4">
+      <div className="text-center mb-10">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-blue-100/80 text-[11px] uppercase font-black tracking-widest mb-4">
+          <i className="ti ti-sparkles text-[#FFC72C]"></i> Roadmap da plataforma
+        </div>
+        <h2 className="font-title text-3xl sm:text-4xl font-black text-white tracking-tight">
+          Tudo que o Itaplan{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFC72C] to-[#F5B800]">
+            pode fazer pelo seu comércio
+          </span>
+        </h2>
+        <p className="text-blue-100/70 text-sm sm:text-base max-w-2xl mx-auto mt-3 leading-relaxed">
+          Funcionalidades já entregues, em homologação e no roadmap — pensadas especificamente para
+          a realidade do varejo de Itabira e região.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {FEATURES.map((f, idx) => (
+          <FeatureCard key={idx} feature={f} />
+        ))}
+      </div>
+
+      {/* Legend */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] text-blue-100/60 font-bold">
+        <span className="inline-flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#0F8B58]"></span> Pronto
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#FFC72C]"></span> Beta / em homologação
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-[#9BB8F2]"></span> Roadmap
+        </span>
+      </div>
+    </section>
+  );
+}
+
+function FeatureCard({ feature }: { feature: typeof FEATURES[number] }) {
+  const tagMap = {
+    pronto:  { color: '#0F8B58', label: 'Pronto', bg: 'rgba(15,139,88,0.15)' },
+    beta:    { color: '#FFC72C', label: 'Beta',   bg: 'rgba(255,199,44,0.12)' },
+    roadmap: { color: '#9BB8F2', label: 'Roadmap', bg: 'rgba(30,91,207,0.12)' },
+  } as const;
+  const tag = tagMap[feature.tag];
+  return (
+    <div className="group bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-[#FFC72C]/40 hover:bg-white/[0.08] rounded-2xl p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl">
+      <div className="flex items-start justify-between mb-3">
+        <div className="w-11 h-11 rounded-xl bg-[#0A2A6E] border border-white/10 text-[#FFC72C] flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+          <i className={`ti ${feature.icon}`}></i>
+        </div>
+        <span
+          className="text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-full border"
+          style={{ color: tag.color, background: tag.bg, borderColor: tag.bg }}
+        >
+          {tag.label}
+        </span>
+      </div>
+      <h3 className="font-title font-black text-white text-base leading-tight">{feature.title}</h3>
+      <p className="text-[12px] text-blue-100/70 mt-2 leading-relaxed">{feature.description}</p>
     </div>
   );
 }

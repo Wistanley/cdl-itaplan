@@ -82,7 +82,7 @@ export default function Admin(props: AdminProps) {
               </div>
               <div className="text-right">
                 <p className="text-[12px] font-bold text-[#0E1A33] leading-tight">Mariana V.</p>
-                <p className="text-[10px] text-[#8893AE] leading-tight">Superintendente</p>
+                <p className="text-[10px] text-[#8893AE] leading-tight">Coordenadora</p>
               </div>
             </div>
             <button
@@ -98,9 +98,9 @@ export default function Admin(props: AdminProps) {
 
       <div className="flex-1 max-w-[1500px] w-full mx-auto flex flex-col md:flex-row">
         {/* Sidebar */}
-        <aside className="w-full md:w-[240px] bg-white border-r border-[#DDE3EE] p-4 flex flex-col justify-between gap-8 md:min-h-[calc(100vh-69px)]">
-          <div className="space-y-1">
-            <p className="text-[10px] font-black uppercase text-[#8893AE] tracking-widest px-3 mb-3">
+        <aside className="w-full md:w-[240px] bg-white border-b md:border-b-0 md:border-r border-[#DDE3EE] p-3 md:p-4 flex flex-col gap-4 md:gap-8 md:min-h-[calc(100vh-69px)]">
+          <div className="flex md:flex-col md:space-y-1 gap-1 overflow-x-auto md:overflow-visible -mx-3 md:mx-0 px-3 md:px-0 scrollbar-thin">
+            <p className="hidden md:block text-[10px] font-black uppercase text-[#8893AE] tracking-widest px-3 mb-3">
               Menu principal
             </p>
             {NAV_ITEMS.map((item) => {
@@ -110,14 +110,14 @@ export default function Admin(props: AdminProps) {
                   key={item.tab}
                   id={`sidebar-tab-${item.tab}`}
                   onClick={() => setTab(item.tab)}
-                  className={`w-full text-left px-3.5 py-2.5 rounded-xl text-sm flex items-center gap-2.5 transition-all duration-200 cursor-pointer ${
+                  className={`flex-shrink-0 md:w-full text-left px-3 md:px-3.5 py-2 md:py-2.5 rounded-xl text-xs md:text-sm flex items-center gap-2 md:gap-2.5 transition-all duration-200 cursor-pointer whitespace-nowrap ${
                     isActive
                       ? 'bg-[#0A2A6E] text-white font-bold shadow-md'
                       : 'text-[#4A5878] font-semibold hover:bg-[#EEF4FE] hover:text-[#0A2A6E]'
                   }`}
                 >
                   <i
-                    className={`ti ${item.icon} text-lg ${
+                    className={`ti ${item.icon} text-base md:text-lg ${
                       isActive ? 'text-[#FFC72C]' : 'text-[#8893AE]'
                     }`}
                   ></i>
@@ -128,7 +128,7 @@ export default function Admin(props: AdminProps) {
           </div>
 
           {/* Countdown card */}
-          <div className="bg-gradient-to-br from-[#0A2A6E] to-[#103A8C] text-white rounded-2xl p-4 text-center relative overflow-hidden">
+          <div className="hidden md:block bg-gradient-to-br from-[#0A2A6E] to-[#103A8C] text-white rounded-2xl p-4 text-center relative overflow-hidden">
             <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-[#FFC72C]/15"></div>
             <p className="text-[10px] font-black uppercase text-[#FFC72C] tracking-wider relative">
               Tempo restante
@@ -180,7 +180,7 @@ function DashboardTab(props: AdminProps) {
     <div className="space-y-8 animate-fade-in">
       <SectionHeader
         title="Visão consolidada"
-        subtitle="Indicadores em tempo real da operação Itaplan e da campanha ativa."
+        subtitle="Indicadores em tempo real do comércio itabirano e da campanha ativa."
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -324,7 +324,7 @@ function DashboardTab(props: AdminProps) {
                     </div>
                     <Progress value={percent} color={metMeta ? 'green' : 'gold'} />
                     <div className="flex items-center justify-between text-[10px]">
-                      <span className="text-[#8893AE]">{store.responsavel} · {store.piso}</span>
+                      <span className="text-[#8893AE]">{store.responsavel} · {store.bairro}</span>
                       <span className={`font-bold uppercase tracking-wider ${metMeta ? 'text-[#0F8B58]' : 'text-[#C58A07]'}`}>
                         {percent}% {metMeta && '✓'}
                       </span>
@@ -563,7 +563,7 @@ function CampanhasTab({
                   <option value="namorados">❤️ Dia dos Namorados</option>
                   <option value="volta-aulas">🎒 Volta às Aulas</option>
                   <option value="inverno">❄️ Festival de Inverno</option>
-                  <option value="aniversario">🎂 Aniversário do Shopping</option>
+                  <option value="aniversario">🎂 Aniversário de Itabira</option>
                 </select>
               </FormField>
 
@@ -794,8 +794,8 @@ function LojasTab({
     nome: '',
     responsavel: '',
     categoria: 'Vestuário',
-    piso: 'Térreo',
-    loja: '',
+    bairro: 'Centro',
+    endereco: '',
     meta: 500,
   });
 
@@ -810,8 +810,8 @@ function LojasTab({
         nome: form.nome,
         responsavel: form.responsavel,
         categoria: form.categoria,
-        piso: form.piso,
-        loja: form.loja || `L-${newId.toString().padStart(3, '0')}`,
+        bairro: form.bairro,
+        endereco: form.endereco || 'Endereço a confirmar',
         cuponsEmitidos: 0,
         vendasRegistradas: 0,
         meta: form.meta,
@@ -821,7 +821,7 @@ function LojasTab({
         notasFiscais: 0,
       },
     ]);
-    setForm({ nome: '', responsavel: '', categoria: 'Vestuário', piso: 'Térreo', loja: '', meta: 500 });
+    setForm({ nome: '', responsavel: '', categoria: 'Vestuário', bairro: 'Centro', endereco: '', meta: 500 });
     setModalOpen(false);
   };
 
@@ -830,7 +830,7 @@ function LojasTab({
   return (
     <div className="space-y-6 animate-fade-in">
       <SectionHeader
-        title="Lojas credenciadas"
+        title="Lojas credenciadas em Itabira"
         subtitle={`${stores.length} comércios ativos · Faturamento agregado: ${formatCompactBRL(totalFaturamento)}/mês`}
         action={
           <button
@@ -851,7 +851,7 @@ function LojasTab({
                 <th className="py-3 px-4">Loja</th>
                 <th className="py-3 px-4">Responsável</th>
                 <th className="py-3 px-4">Categoria</th>
-                <th className="py-3 px-4">Localização</th>
+                <th className="py-3 px-4">Bairro / Endereço</th>
                 <th className="py-3 px-4 text-right">Faturamento/mês</th>
                 <th className="py-3 px-4 text-right">NFs</th>
                 <th className="py-3 px-4 text-right">Cupons</th>
@@ -872,7 +872,7 @@ function LojasTab({
                         </div>
                         <div>
                           <p>{store.nome}</p>
-                          <p className="text-[10px] text-[#8893AE] font-medium">{store.loja}</p>
+                          <p className="text-[10px] text-[#8893AE] font-medium">Loja #{String(store.id).padStart(3, '0')}</p>
                         </div>
                       </div>
                     </td>
@@ -880,7 +880,12 @@ function LojasTab({
                     <td className="py-3 px-4">
                       <Badge color="blue">{store.categoria}</Badge>
                     </td>
-                    <td className="py-3 px-4 text-[#4A5878] text-xs">{store.piso}</td>
+                    <td className="py-3 px-4 text-[#4A5878] text-xs">
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-[#0E1A33]">{store.bairro}</span>
+                        <span className="text-[10px] text-[#8893AE]">{store.endereco}</span>
+                      </div>
+                    </td>
                     <td className="py-3 px-4 font-mono text-right font-bold text-[#0E1A33]">
                       {formatCompactBRL(store.faturamentoMes)}
                     </td>
@@ -967,27 +972,30 @@ function LojasTab({
                     <option>Serviços</option>
                   </select>
                 </FormField>
-                <FormField label="Piso">
+                <FormField label="Bairro">
                   <select
                     className="form-input"
-                    value={form.piso}
-                    onChange={(e) => setForm({ ...form, piso: e.target.value })}
+                    value={form.bairro}
+                    onChange={(e) => setForm({ ...form, bairro: e.target.value })}
                   >
-                    <option>Térreo</option>
-                    <option>Piso 1</option>
-                    <option>Piso 2</option>
-                    <option>Praça</option>
+                    <option>Centro</option>
+                    <option>Pedreira</option>
+                    <option>Esplanada</option>
+                    <option>Bom Jesus</option>
+                    <option>Major Lage</option>
+                    <option>Areão</option>
+                    <option>Outros</option>
                   </select>
                 </FormField>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <FormField label="Nº da loja">
+                <FormField label="Endereço">
                   <input
                     type="text"
                     className="form-input"
-                    placeholder="L-218"
-                    value={form.loja}
-                    onChange={(e) => setForm({ ...form, loja: e.target.value })}
+                    placeholder="Rua, número"
+                    value={form.endereco}
+                    onChange={(e) => setForm({ ...form, endereco: e.target.value })}
                   />
                 </FormField>
                 <FormField label="Meta de cupons">
@@ -1074,7 +1082,7 @@ function ComunicadosTab({
       resumo: form.resumo || form.conteudo.slice(0, 100),
       conteudo: form.conteudo,
       remetente: 'Mariana Vasconcelos',
-      cargo: 'Superintendente Itaplan',
+      cargo: 'Coordenação Itaplan',
       data: new Date().toISOString().slice(0, 10),
       lido: true,
       destinatarios: 'todas-lojas',

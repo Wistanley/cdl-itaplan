@@ -134,17 +134,17 @@ export const INITIAL_CAMPAIGNS: Campaign[] = [
 ];
 
 // ==========================================
-// STORES — lojas parceiras do shopping
+// STORES — lojas parceiras do comércio itabirano
 // ==========================================
 export const INITIAL_STORES: Store[] = [
-  { id: 1, nome: 'Supermercado Alfa',     responsavel: 'Carlos Silva',     categoria: 'Alimentação',  piso: 'Térreo', loja: 'L-101', cuponsEmitidos: 1250, vendasRegistradas: 840, meta: 1500, ticketMedio: 187.50, engajamento: 94, faturamentoMes: 489_300, notasFiscais: 2845 },
-  { id: 2, nome: 'Moda & Estilo',         responsavel: 'Ana Oliveira',     categoria: 'Vestuário',    piso: 'Piso 1', loja: 'L-218', cuponsEmitidos: 812,  vendasRegistradas: 530, meta: 800,  ticketMedio: 245.00, engajamento: 89, faturamentoMes: 312_800, notasFiscais: 1620 },
-  { id: 3, nome: 'Farmácia Central',      responsavel: 'Roberto Santos',   categoria: 'Saúde',        piso: 'Térreo', loja: 'L-115', cuponsEmitidos: 620,  vendasRegistradas: 410, meta: 600,  ticketMedio: 92.00,  engajamento: 78, faturamentoMes: 178_900, notasFiscais: 1980 },
-  { id: 4, nome: 'Eletro Lar',            responsavel: 'Fernanda Costa',   categoria: 'Eletrônicos',  piso: 'Piso 2', loja: 'L-302', cuponsEmitidos: 580,  vendasRegistradas: 390, meta: 1000, ticketMedio: 1290.00, engajamento: 71, faturamentoMes: 920_500, notasFiscais: 728 },
-  { id: 5, nome: 'Calçados Passo Seguro', responsavel: 'Marcos Souza',     categoria: 'Vestuário',    piso: 'Piso 1', loja: 'L-225', cuponsEmitidos: 410,  vendasRegistradas: 290, meta: 500,  ticketMedio: 168.00, engajamento: 82, faturamentoMes: 142_300, notasFiscais: 845 },
-  { id: 6, nome: 'Bazar Mil Coisas',      responsavel: 'Juliana Lima',     categoria: 'Casa',         piso: 'Térreo', loja: 'L-128', cuponsEmitidos: 175,  vendasRegistradas: 120, meta: 300,  ticketMedio: 48.00,  engajamento: 64, faturamentoMes: 56_400,  notasFiscais: 1180 },
-  { id: 7, nome: 'Café Aroma',            responsavel: 'Pedro Henrique',   categoria: 'Alimentação',  piso: 'Praça',  loja: 'P-04',  cuponsEmitidos: 290,  vendasRegistradas: 245, meta: 350,  ticketMedio: 38.50,  engajamento: 86, faturamentoMes: 88_200,  notasFiscais: 2390 },
-  { id: 8, nome: 'Beleza Glamour',        responsavel: 'Camila Andrade',   categoria: 'Beleza',       piso: 'Piso 1', loja: 'L-242', cuponsEmitidos: 340,  vendasRegistradas: 215, meta: 400,  ticketMedio: 215.00, engajamento: 88, faturamentoMes: 196_800, notasFiscais: 920 },
+  { id: 1, nome: 'Supermercado Alfa',     responsavel: 'Carlos Silva',     categoria: 'Alimentação', bairro: 'Centro',    endereco: 'Rua Sete de Setembro, 234',          cuponsEmitidos: 1250, vendasRegistradas: 840, meta: 1500, ticketMedio: 187.50, engajamento: 94, faturamentoMes: 489_300, notasFiscais: 2845 },
+  { id: 2, nome: 'Moda & Estilo',         responsavel: 'Ana Oliveira',     categoria: 'Vestuário',   bairro: 'Centro',    endereco: 'Rua João Pinheiro, 89',              cuponsEmitidos: 812,  vendasRegistradas: 530, meta: 800,  ticketMedio: 245.00, engajamento: 89, faturamentoMes: 312_800, notasFiscais: 1620 },
+  { id: 3, nome: 'Farmácia Central',      responsavel: 'Roberto Santos',   categoria: 'Saúde',       bairro: 'Pedreira',  endereco: 'Av. Carlos Drummond de Andrade, 1240', cuponsEmitidos: 620,  vendasRegistradas: 410, meta: 600,  ticketMedio: 92.00,  engajamento: 78, faturamentoMes: 178_900, notasFiscais: 1980 },
+  { id: 4, nome: 'Eletro Lar',            responsavel: 'Fernanda Costa',   categoria: 'Eletrônicos', bairro: 'Centro',    endereco: 'Av. Carlos Drummond de Andrade, 540',  cuponsEmitidos: 580,  vendasRegistradas: 390, meta: 1000, ticketMedio: 1290.00, engajamento: 71, faturamentoMes: 920_500, notasFiscais: 728 },
+  { id: 5, nome: 'Calçados Passo Seguro', responsavel: 'Marcos Souza',     categoria: 'Vestuário',   bairro: 'Esplanada', endereco: 'Rua Vasco Lessa, 102',               cuponsEmitidos: 410,  vendasRegistradas: 290, meta: 500,  ticketMedio: 168.00, engajamento: 82, faturamentoMes: 142_300, notasFiscais: 845 },
+  { id: 6, nome: 'Bazar Mil Coisas',      responsavel: 'Juliana Lima',     categoria: 'Casa',        bairro: 'Bom Jesus', endereco: 'Rua Cruzeiro, 78',                   cuponsEmitidos: 175,  vendasRegistradas: 120, meta: 300,  ticketMedio: 48.00,  engajamento: 64, faturamentoMes: 56_400,  notasFiscais: 1180 },
+  { id: 7, nome: 'Café Aroma',            responsavel: 'Pedro Henrique',   categoria: 'Alimentação', bairro: 'Centro',    endereco: 'Praça da Estação, s/n',              cuponsEmitidos: 290,  vendasRegistradas: 245, meta: 350,  ticketMedio: 38.50,  engajamento: 86, faturamentoMes: 88_200,  notasFiscais: 2390 },
+  { id: 8, nome: 'Beleza Glamour',        responsavel: 'Camila Andrade',   categoria: 'Beleza',      bairro: 'Centro',    endereco: 'Rua João Pinheiro, 156',             cuponsEmitidos: 340,  vendasRegistradas: 215, meta: 400,  ticketMedio: 215.00, engajamento: 88, faturamentoMes: 196_800, notasFiscais: 920 },
 ];
 
 export const INITIAL_CLIENTS_RECENT: ClientRecent[] = [
@@ -199,10 +199,10 @@ export const INITIAL_COMUNICADOS: Comunicado[] = [
     id: 1,
     tipo: 'memorando',
     titulo: 'MEMO 042/2025 — Ajuste de horário no período natalino',
-    resumo: 'O shopping operará em horário estendido entre 18 e 24 de dezembro.',
-    conteudo: 'A administração do Itaplan informa que, entre os dias 18 e 24 de dezembro, o shopping operará em horário estendido das 09h00 às 23h00. As lojas devem garantir equipe completa neste período e ajustar escalas. Lojas da praça de alimentação seguem horário estendido até 00h00 nos dias 23 e 24.',
+    resumo: 'Comércio itabirano em horário estendido entre 18 e 24 de dezembro.',
+    conteudo: 'A administração do Itaplan, em conjunto com a Prefeitura de Itabira e a CDL, informa que entre os dias 18 e 24 de dezembro o comércio do Centro funcionará em horário estendido das 09h00 às 22h00. As lojas credenciadas devem garantir equipe completa neste período e ajustar escalas. Lojas dos bairros Pedreira e Esplanada com aderência facultativa.',
     remetente: 'Mariana Vasconcelos',
-    cargo: 'Superintendente Itaplan',
+    cargo: 'Coordenação Itaplan',
     data: '2025-12-15',
     lido: false,
     prioridade: 'alta',
@@ -225,8 +225,8 @@ export const INITIAL_COMUNICADOS: Comunicado[] = [
     id: 3,
     tipo: 'comunicado',
     titulo: 'Resultado da pesquisa de satisfação — Nov/2025',
-    resumo: 'NPS consolidado do shopping atingiu 78 pontos, alta de 6 pp.',
-    conteudo: 'A pesquisa de satisfação aplicada em novembro/2025 com 1.842 visitantes registrou NPS consolidado de 78 pontos (versus 72 em outubro). Categorias com destaque positivo: limpeza, segurança e mix de lojas. Categorias com atenção: estacionamento e Wi-Fi público. Plano de ação em anexo.',
+    resumo: 'NPS consolidado do comércio itabirano atingiu 78 pontos, alta de 6 pp.',
+    conteudo: 'A pesquisa de satisfação aplicada em novembro/2025 com 1.842 consumidores registrou NPS consolidado do comércio itabirano de 78 pontos (versus 72 em outubro). Categorias com destaque positivo: atendimento, variedade de lojas e preços. Categorias com atenção: sinalização das vagas no Centro e cobertura Wi-Fi nas praças. Plano de ação em anexo.',
     remetente: 'Camila Andrade',
     cargo: 'Marketing Itaplan',
     data: '2025-12-10',
@@ -265,9 +265,9 @@ export const INITIAL_COMUNICADOS: Comunicado[] = [
   {
     id: 6,
     tipo: 'alerta',
-    titulo: 'ALERTA — Reforço da brigada nas saídas de emergência',
-    resumo: 'Auditoria do corpo de bombeiros agendada para 22/12.',
-    conteudo: 'Em razão de auditoria oficial do Corpo de Bombeiros agendada para 22/12/2025, todas as lojas devem manter saídas de emergência completamente desobstruídas e os extintores acessíveis. Equipe de brigada estará em ronda preventiva entre 19 e 21/12.',
+    titulo: 'ALERTA — Vistoria do Corpo de Bombeiros nas lojas credenciadas',
+    resumo: 'Vistoria oficial agendada para 22/12 nas lojas do Centro e Pedreira.',
+    conteudo: 'Em razão de vistoria oficial do Corpo de Bombeiros de Itabira agendada para 22/12/2025, todas as lojas credenciadas Itaplan devem manter saídas de emergência desobstruídas, extintores na validade e AVCB visível na entrada. A equipe técnica do Itaplan estará em ronda preventiva nas lojas do Centro e Pedreira entre 19 e 21/12.',
     remetente: 'Lucas Pereira',
     cargo: 'Segurança e Compliance',
     data: '2025-12-12',
@@ -280,7 +280,7 @@ export const INITIAL_COMUNICADOS: Comunicado[] = [
     tipo: 'comunicado',
     titulo: 'Relatório mensal de fluxo — Novembro 2025',
     resumo: '892.430 visitantes únicos. Crescimento de 12% YoY.',
-    conteudo: 'O fluxo consolidado do shopping em novembro/2025 atingiu 892.430 visitantes únicos, alta de 12% em relação a novembro/2024. Pico de fluxo: sábado 22/11 (54.200 visitantes). Permanência média: 1h47min. Dados completos no relatório anexo.',
+    conteudo: 'O fluxo consolidado nas lojas credenciadas do comércio itabirano em novembro/2025 atingiu 892.430 visitas únicas (somatório das lojas), alta de 12% em relação a novembro/2024. Pico de fluxo: sábado 22/11 (54.200 visitas). Tempo médio de permanência no Centro: 1h47min. Dados completos no relatório anexo.',
     remetente: 'Inteligência de Dados',
     cargo: 'BI Itaplan',
     data: '2025-12-03',
@@ -305,7 +305,7 @@ export const INITIAL_DOCUMENTOS: Documento[] = [
     autor: 'Diretoria Financeira',
     confidencial: true,
     acessosSemana: 142,
-    descricao: 'Demonstrativo financeiro consolidado de novembro: receitas, aluguéis, condomínios e provisões.',
+    descricao: 'Demonstrativo financeiro consolidado de novembro: receitas, mensalidades de credenciamento, custos operacionais e provisões.',
   },
   {
     id: 2,
@@ -369,7 +369,7 @@ export const INITIAL_DOCUMENTOS: Documento[] = [
   },
   {
     id: 7,
-    nome: 'Planilha Master — Aluguéis e Condomínios 2025',
+    nome: 'Planilha Master — Mensalidades de Credenciamento 2025',
     tipo: 'relatorio-financeiro',
     formato: 'xlsx',
     tamanho: '1.6 MB',
@@ -377,7 +377,7 @@ export const INITIAL_DOCUMENTOS: Documento[] = [
     autor: 'Controladoria',
     confidencial: true,
     acessosSemana: 22,
-    descricao: 'Planilha consolidada de valores cobrados, aging e inadimplência por loja.',
+    descricao: 'Planilha consolidada de mensalidades de credenciamento, aging e inadimplência por loja parceira.',
   },
   {
     id: 8,
@@ -412,13 +412,13 @@ export const DEMOGRAPHIC_GENDER: DemographicGender = {
 };
 
 export const NEIGHBORHOODS: NeighborhoodData[] = [
-  { bairro: 'Centro',         visitantes: 24_580, percentual: 23, ticketMedio: 168.0 },
-  { bairro: 'Jardim Europa',  visitantes: 18_320, percentual: 17, ticketMedio: 254.0 },
-  { bairro: 'Vila Nova',      visitantes: 14_215, percentual: 13, ticketMedio: 142.0 },
-  { bairro: 'Boa Vista',      visitantes: 11_890, percentual: 11, ticketMedio: 189.0 },
-  { bairro: 'Industrial',     visitantes: 9_410,  percentual: 9,  ticketMedio: 96.0  },
-  { bairro: 'São Pedro',      visitantes: 8_620,  percentual: 8,  ticketMedio: 115.0 },
-  { bairro: 'Outros',         visitantes: 20_890, percentual: 19, ticketMedio: 132.0 },
+  { bairro: 'Centro',        visitantes: 24_580, percentual: 27, ticketMedio: 168.0 },
+  { bairro: 'Pedreira',      visitantes: 18_320, percentual: 20, ticketMedio: 154.0 },
+  { bairro: 'Esplanada',     visitantes: 14_215, percentual: 16, ticketMedio: 142.0 },
+  { bairro: 'Bom Jesus',     visitantes: 11_890, percentual: 13, ticketMedio: 189.0 },
+  { bairro: 'Major Lage',    visitantes: 9_410,  percentual: 10, ticketMedio: 96.0  },
+  { bairro: 'Areão',         visitantes: 6_620,  percentual: 7,  ticketMedio: 115.0 },
+  { bairro: 'Outros bairros', visitantes: 6_890, percentual: 7,  ticketMedio: 132.0 },
 ];
 
 export const SEGMENT_SHARES: SegmentShare[] = [
